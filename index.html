@@ -1,0 +1,1689 @@
+
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make IoT Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .top-header {
+      background-color: #f7902a;
+      color: white;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+      height: 40px;
+    }
+
+    .top-header .center-text {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 600;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #eae5e5;
+      padding: 15px 30px;
+      position: fixed;
+      top: 40px;
+      width: 100%;
+      z-index: 1000;
+      height: 80px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 15px;
+      flex: 1;
+      justify-content: right;
+      margin-right: 30px;
+    }
+
+    .nav-center li {
+      list-style: none;
+    }
+
+    .nav-center li a {
+      text-decoration: none;
+      color: #111;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: color 0.2s;
+    }
+
+    .nav-center li a:hover {
+      color: #f0a500;
+    }
+
+    .navbar-callback-btn {
+      background: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      margin-left: 20px;
+    }
+
+    .navbar-callback-btn:hover {
+      background: #e64a19;
+    }
+
+    .callback-form {
+      position: fixed;
+      top: 170px;
+      right: -350px;
+      transform: translateY(0);
+      width: 300px;
+      background: white;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: right 0.4s ease-in-out;
+      z-index: 2000;
+    }
+
+    .callback-form.active {
+      right: 20px;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label {
+      margin-top: 10px;
+    }
+
+    form input {
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 80px;
+    }
+
+    button[type="submit"]:hover {
+      background: #e64a19;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px 20px;
+      }
+
+      .nav-center {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px 0;
+        gap: 10px;
+      }
+
+      .navbar-callback-btn {
+        align-self: center;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .top-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        gap: 5px;
+      }
+
+      .top-header .center-text {
+        position: static;
+        transform: none;
+      }
+
+      .callback-form {
+        top: 100px;
+        right: -100%;
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .callback-form.active {
+        right: 10px;
+      }
+
+      .nav-center li a {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Header -->
+  <div class="top-header">
+    <div style=" font-size: 18px;">📧info@makeiot.in</div>
+    <div class="center-text"  style="color:#3b2f2f; font-size: 18px;">🚀 Kickstart Your Career! Land Your First Job in Just 60 Days! 🎯</div>
+    <div style="font-size:18px;">📞 +918856905687</div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="Make_IoT__3_-removebg-preview.png" alt="Logo">
+    </div>
+    <ul class="nav-center">
+      <li><a href="#hero-section">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#event">Events</a></li>
+      <li><a href="https://forms.gle/2yhzdZrYbTe3x3ax8" target="_blank">Internship</a></li>
+      <li><a href="#about-us">About Us</a></li>
+      <li><a href="#batches">Batches</a></li>
+    </ul>
+    <button id="callbackBtn" class="navbar-callback-btn">📞 Request a Callback</button>
+  </nav>
+
+  <!-- Callback Form -->
+  <div class="callback-form" id="callbackForm">
+    <span class="close-btn" id="closeForm">&times;</span>
+    <h2>Request a Callback</h2>
+    <form id="callbackFormData" method="POST" name="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required>
+      <label for="contact">Contact No:</label>
+      <input type="tel" name="contact_number" id="contact_number" required>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+
+
+<!-- Swiper CSS ONLY FOR HERO -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css">
+
+<style>
+  /* GLOBAL RESET TO REMOVE SCROLLBARS */
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Hero Section Styles */
+  #hero-section {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden; /* Prevent vertical scrollbar */
+  }
+
+  .hero-swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-swiper .swiper-wrapper {
+    height: 100%;
+  }
+
+  .hero-swiper .swiper-slide {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4); /* dark overlay for readability */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  .hero-content {
+    width: 50%;
+    color: white;
+    animation: fadeInLeft 1s ease-in-out;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #FFD700; /* Gold */
+    text-shadow: 2px 2px 5px #000000; /* Black Shadow */
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  /* Simple fade animation */
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Hide swiper pagination bullets */
+  .hero-swiper .swiper-pagination {
+    display: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      width: 100%;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section id="hero-section">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide" style="background-image: url('photo_2025-04-06_16-00-18.jpg');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Welcome to Make IoT</h1>
+            <p><b>Build Your Career in the Core Electrical and Electronics Domain</b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide" style="background-image: url('image_2025-04-10_22-29-44.png');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Get Future-Ready Skills</h1>
+            <p><b>We offer the most advanced technical courses at affordable prices.</b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide" style="background-image: url('image_2025-04-10_22-07-24.png');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Master Technology by Building Real Projects</h1>
+            <p><b>Hands-on projects and real-world applications.</b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide" style="background-image: url('photo_2025-04-06_16-01-02.jpg');">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1>Turn Your Skills Into Your Dream Job</h1>
+            <p> <b> Get your first job with Make IoT within 60 Days</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Swiper JS ONLY FOR HERO -->
+<script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  const heroSwiper = new Swiper('.hero-swiper', {
+    loop: true,
+    effect: 'fade',
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
+    allowTouchMove: false, // optional: makes it non-scrollable manually
+    speed: 1000,
+    pagination: false,
+    navigation: false,
+  });
+</script>
+
+
+
+
+
+
+<section class="courses" id="courses">
+  <h2 style="font-size: 28px;">Explore Top Courses 📚</h2>
+  <div class="course-container">
+
+    <div class="course">
+      <img src="1co.png" alt="Embeddedsystem">
+    
+      <a href="Master Embedded System in 90 Days (4).pdf" 
+         target="_blank" 
+         onclick="openPDF()" 
+         download="Master Embedded System in 90 Days (4).pdf"
+         style="display: inline-block; padding: 10px 20px; background-color: orange; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
+        Get Syllabus
+      </a>
+    
+      <p style="font-size: 1.2rem; font-weight: bold;">
+        Course <span style="text-decoration: line-through; color: red;">₹30,000</span> only at <span style="color: green;">₹9,999/- Only</span>
+      </p>
+    </div>
+    
+
+    
+    <div class="course">
+      <img src="Master PLC and SCADA (2) (2).png" alt="PLC SCADA">
+    
+      <a href="plc scada.pdf" 
+         target="_blank" 
+         onclick="openPDF()" 
+         download="plc scada.pdf"
+         style="display: inline-block; padding: 10px 20px; background-color: orange; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
+        Get Syllabus
+      </a>
+    
+      <p style="font-size: 1.2rem; font-weight: bold;">
+        Course <span style="text-decoration: line-through; color: red;">₹30,000</span> only at <span style="color: green;">₹9,999/- Only</span>
+      </p>
+    </div>
+
+
+    
+    <div class="course">
+      <img src="automotive.png" alt="automotive">
+    
+      <a href="Master Embedded System in 90 Days (4).pdf" 
+         target="_blank" 
+         onclick="openPDF()" 
+         download="Master Embedded System in 90 Days (4).pdf"
+         style="display: inline-block; padding: 10px 20px; background-color: orange; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
+        Get Syllabus
+      </a>
+    
+      <p style="font-size: 1.2rem; font-weight: bold;">
+        Course <span style="text-decoration: line-through; color: red;">₹30,000</span> only at <span style="color: green;">₹9,999/- Only</span>
+      </p>
+    </div>
+
+
+    
+    <div class="course">
+      <img src="AI-IoT.png" alt="Embeddedsystem">
+    
+      <a href="Master Embedded System in 90 Days (4).pdf" 
+         target="_blank" 
+         onclick="openPDF()" 
+         download="Master Embedded System in 90 Days (4).pdf"
+         style="display: inline-block; padding: 10px 20px; background-color: orange; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
+        Get Syllabus
+      </a>
+    
+      <p style="font-size: 1.2rem; font-weight: bold;">
+        Course <span style="text-decoration: line-through; color: red;">₹30,000</span> only at <span style="color: green;">₹9,999/- Only</span>
+      </p>
+    </div>
+
+
+    
+
+<style>
+
+  
+  
+
+/* Explore Top Courses Section */
+.courses {
+    padding: 20px 20px;
+    text-align: center;
+    background: #f9f9f9;
+    top: 845px;
+
+  }
+  
+  .courses h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .course-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+   
+  }
+
+  
+  .course {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+   height:450px;
+  }
+  
+  .course img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .course h3 {
+    font-size: 24px;
+    margin: 15px 0;
+  }
+  
+  .course p {
+    font-size: 16px;
+    color: #060606;
+    margin-bottom: 15px;
+  }
+  
+  .course-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .button1{
+      background:#ffcc00;
+  }
+  .course-btn:hover {
+    background: black;
+    color: white;
+  }
+  
+  /* Hover Effect on Course Cards */
+  .course:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  #info-box {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #info-box {
+    display: none; /* Pehle hide rahega */
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #syllabus-button {
+    display: none; /* Pehle hide rahega */
+  }
+  
+  
+</style>
+
+
+
+
+<style>
+  .custom-batches-section {
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+
+  .custom-batches-table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #0b0b0b;
+  }
+
+  .custom-batches-table th,
+  .custom-batches-table td {
+    padding: 12px;
+    border: 1px solid #0e0e0e;
+  }
+
+  .custom-batches-table thead {
+    background-color: #ff5722;
+    color: white;
+  }
+
+  .custom-enroll-btn {
+    padding: 8px 14px;
+    background-color: #e64a19;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .custom-batches-table,
+    .custom-batches-table thead,
+    .custom-batches-table tbody,
+    .custom-batches-table th,
+    .custom-batches-table td,
+    .custom-batches-table tr {
+      display: block;
+      width: 100%;
+    }
+
+    .custom-batches-table thead {
+      display: none;
+    }
+
+    .custom-batches-table tr {
+      margin-bottom: 20px;
+      background: #f9f9f9;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+
+     
+    }
+
+    .custom-batches-table td {
+      text-align: left;
+      padding: 10px;
+      border: none;
+      position: relative;
+      font-size: 24px;
+    }
+
+   
+
+    
+
+    .custom-batches-table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+    }
+  }
+</style>
+
+<section id="batches" class="custom-batches-section">
+  <h2 style="text-align: center; margin-bottom: 30px; font-size: 28px; font-weight: bold; color: #333;">
+    📅 Upcoming Batches
+  </h2>
+  <div>
+    <table class="custom-batches-table">
+      <thead>
+        <tr>
+          <th style="font-size: 22px;">Sr No</th>
+          <th style="font-size: 22px;">Course</th>
+          <th style="font-size: 22px;">Mode</th>
+          <th style="font-size: 22px;">Date</th>
+          <th style="font-size: 22px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Sr No" style="font-size: 18px;">1</td>
+          <td data-label="Course" style="font-size: 18px;">Master Embedded System in 90 Days</td>
+          <td data-label="Mode" style="font-size: 18px;">Offline+Online</td>
+          <td data-label="Date" style="font-size: 18px;">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn" style="font-size: 18px;">Enroll Now</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Sr No" style="font-size: 18px;">2</td>
+          <td data-label="Course" style="font-size: 18px;">Master PLC-SCADA System in 30 Days</td>
+          <td data-label="Mode" style="font-size: 18px;">Offline+Online</td>
+          <td data-label="Date" style="font-size: 18px;">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn" style="font-size: 18px;">Enroll Now</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Sr No">3</td>
+          <td data-label="Course" style="font-size: 18px;">Free Embedded and IoT Internship</td>
+          <td data-label="Mode" style="font-size: 18px;">Offline+Online</td>
+          <td data-label="Date" style="font-size: 18px;">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn" style="font-size: 18px;">Enroll Now</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+  <!-- JavaScript -->
+  <script>
+    const callbackBtn = document.getElementById("callbackBtn");
+    const callbackForm = document.getElementById("callbackForm");
+    const closeForm = document.getElementById("closeForm");
+    const enrollButtons = document.querySelectorAll(".custom-enroll-btn");
+
+    callbackBtn.addEventListener("click", () => callbackForm.classList.add("active"));
+    closeForm.addEventListener("click", () => callbackForm.classList.remove("active"));
+    enrollButtons.forEach(btn => btn.addEventListener("click", () => callbackForm.classList.add("active")));
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyxoHvMT10iR8JfQEjE23J3pOgifAWj1FttCAnb8hHP81naKXEp2svxBVzrHz66ogbk/exec';
+    const form = document.forms['contact-form'];
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Thank you! Form is submitted"))
+        .then(() => window.location.reload())
+        .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+
+
+
+
+
+
+<!-- Advantages List -->
+<div class="container py-5">
+  <div class="row">
+
+      <!-- Left Column: Advantages List -->
+      <div class="col-12 col-md-6">
+          <h2 class="text-center" style="font-size: 28px;">Free Tutorials on STM32 Controller with ARM Cortex-M4 Processor</h2>
+          <div class="custom-box">
+              <ul class="list-unstyled">
+                  <li>🔹 Introduction to ARM and Its Importance</li>
+                  <li>🔹 Why ARM Processors Dominate the Embedded World</li>
+                  <li>🔹 History of ARM and STM32 Overview</li>
+                  <li>🔹 ARM Cortex-M4 Architecture and Instruction Set (ISA)</li>
+                  <li>🔹 STM32F4 Architecture and Clock Diagram</li></style>
+                  <li>🔹 How to Install the STM32 IDE (CubeIDE)</li>
+                  <li>🔹 HAL Programming Basics</li>
+                  <li>🔹 Hands-On LED Blinking Project(Your First STM32 Embedded Program)</li>
+                
+              </ul>
+          </div>
+      </div>
+
+      <!-- Right Column: Demo Video -->
+      <div class="col-12 col-md-6 video-container">
+          <h2 style="font-size: 28px;">Let’s Watch a Video Bite From Our Institute</h2>
+          <iframe width="630" height="325" 
+          src="https://www.youtube.com/embed/cLqSwkYFclo?si=Tznhc7nEXn_l6-GE" 
+          title="YouTube video player" frameborder="1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      </iframe>
+          <br>
+          <a href="https://www.youtube.com/@MakeIoT" target="_blank" class="btn btn-custom" style="background-color: #ff5722;">Watch
+              More Videos</a>
+      </div>
+
+  </div>
+</div>
+<script>
+const watchMoreButton = document.querySelector('.watch-more-button');
+if (watchMoreButton) {
+  watchMoreButton.style.display = 'none';
+}
+
+</script>
+
+<style>
+  
+  
+
+/* Container padding */
+.container.py-5 {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    height: 600px;
+
+  }
+  
+  /* Custom Box Styling */
+  .custom-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the advantages list */
+  .custom-box ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .custom-box ul li {
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    padding-left: 20px;
+  }
+  
+  .custom-box ul li:hover { 
+    color: #00FF7F;
+  }
+  
+  .custom-box ul li:before {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  /* Video section styling */
+  .video-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the "Watch More Videos" button */
+  .btn-custom {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px; /* Adjust padding for better visual */
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Ensure button appears as an inline element */
+    margin-top: 20px; /* Add space at the top for proper alignment */
+  }
+  
+  .btn-custom:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Flexbox to arrange columns horizontally */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* For medium and larger screens, keep the layout side-by-side (50% width each) */
+  .col-md-6 {
+    width: 50%;
+    padding: 15px;
+  }
+  
+  /* For smaller screens, keep the columns horizontally aligned */
+  @media (max-width: 767px) {
+    .col-12 {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .video-container iframe {
+      width: 100%;
+      height: auto;
+    }
+  
+    /* Ensure proper alignment of video and advantages list */
+    .col-md-6 {
+      width: 100%; /* Changed from 50% to 100% for mobile responsiveness */
+    }
+  
+    /* Adjust button appearance on smaller screens */
+    .btn-custom {
+      width: 100%; /* Full width for smaller screens */
+      text-align: center;
+      padding: 12px;
+    }
+  }
+  
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+  /* for event and colleges */
+  .combined-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: -40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+
+  
+  }
+
+  .left-section,
+  .right-section {
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1 1 48%;
+    min-width: 300px;
+    height:570px;
+  }
+
+  .logo-gallery-container h2,
+  .right-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .logo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 10px;
+    justify-items: center;
+    align-items: start;
+  }
+
+  .logo-item {
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 14px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 120px;
+  }
+
+  .logo-item:hover {
+    transform: translateY(-6px);
+  }
+
+  .logo-item img {
+    max-width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+
+  .logo-item p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #100e0e;
+  }
+
+  .event-image-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .event-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .event-image-container img:hover {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .combined-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left-section,
+    .right-section {
+      width: 100%;
+    }
+
+    .logo-gallery {
+      grid-template-columns: repeat(2, 1fr);
+
+    }
+  }
+
+  
+.logo-gallery .logo-item:nth-child(4),
+.logo-gallery .logo-item:nth-child(5),
+.logo-gallery .logo-item:nth-child(6) {
+  margin-top: -30px;
+}
+</style>
+</head>
+<body>
+
+<section id="event">
+<div class="combined-container">
+
+  <!-- Left Section: Colleges -->
+  <div class="left-section logo-gallery-container">
+    <h2 style="font-size: 28px;">Our Partner Colleges</h2>
+    <div class="logo-gallery">
+      <div class="logo-item">
+        <img src="logo1.png" alt="SVPM Logo">
+        <p>SVPM College of Engineering, Baramati</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo3.png" alt="Sinhgad Logo">
+        <p>Sinhgad College of Engineering, Vadgaon, Pune</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo21.png" alt="VP Logo">
+        <p>VP's K B Institute of Engineering, Baramati</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo4.png" alt="KBP Logo">
+        <p>Karmaveer Bhaurao Patil College of Engineering, Satara</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo5.png" alt="Sanjivani Logo">
+        <p>Sanjivani College of Engineering, Kopargaon</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo6.png" alt="Sanjivani Logo">
+        <p> Sharadchandra Pawar College Of Engineering, Pune</p>
+      </div>
+
+
+
+
+    </div>
+
+
+    <h3>Host workshops and hands-on training in Embedded Systems, IoT, and PLC-SCADA at your institute. </h3>
+   <h3 style="align-items: center;"><b>Let’s collaborate!  </b></h3>
+  </div>
+
+  <!-- Right Section: Events -->
+  <div class="right-section">
+    <h2>Our Events</h2>
+    <div class="event-image-container" onclick="showNextImage()">
+      <img id="eventImage" src="p2.png" alt="Event">
+    </div>
+  </div>
+
+</div>
+</section>
+
+<script>
+const images = [
+ 
+  "photo_2025-04-06_16-00-25.jpg",
+  "20231103_131659.jpg",
+  
+  "photo_2025-04-06_16-00-33.jpg",
+  "photo_2025-04-06_16-00-39.jpg",
+  "photo_2025-04-06_16-00-29.jpg",
+  
+  "photo_2025-04-06_16-00-14.jpg",
+ "photo_2025-04-06_16-00-42.jpg",
+ 
+  "IMG-20241020-WA0281.jpg",
+];
+
+let currentIndex = 0;
+
+function showNextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  document.getElementById("eventImage").src = images[currentIndex];
+}
+</script>
+
+<style>
+  
+  .logo-gallery-container h3{
+    align-items: center;
+    color: #3b2f2f;
+  }
+
+  </style>
+<style>
+  
+
+/* Container padding */
+.container.py-5 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  /* Custom Box Styling */
+  .custom-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the advantages list */
+  .custom-box ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .custom-box ul li {
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    padding-left: 20px;
+  }
+  
+  .custom-box ul li:hover { 
+    color: #00FF7F;
+  }
+  
+  .custom-box ul li:before {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  /* Video section styling */
+  .video-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the "Watch More Videos" button */
+  .btn-custom {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px; /* Adjust padding for better visual */
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Ensure button appears as an inline element */
+    margin-top: 20px; /* Add space at the top for proper alignment */
+  }
+  
+  .btn-custom:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Flexbox to arrange columns horizontally */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* For medium and larger screens, keep the layout side-by-side (50% width each) */
+  .col-md-6 {
+    width: 50%;
+    padding: 15px;
+  }
+  
+  /* For smaller screens, keep the columns horizontally aligned */
+  @media (max-width: 767px) {
+    .col-12 {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .video-container iframe {
+      width: 100%;
+      height: auto;
+    }
+  
+    /* Ensure proper alignment of video and advantages list */
+    .col-md-6 {
+      width: 100%; /* Changed from 50% to 100% for mobile responsiveness */
+    }
+  
+    /* Adjust button appearance on smaller screens */
+    .btn-custom {
+      width: 100%; /* Full width for smaller screens */
+      text-align: center;
+      padding: 12px;
+    }
+  }
+  
+
+ 
+</style>
+
+
+
+
+
+
+<style>
+  
+
+  .place-section {
+    background: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .place-title {
+    font-size: 32px;
+    color: #ff9900;
+    margin-bottom: 20px;
+  }
+
+  .place-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .place-track {
+    display: flex;
+    gap: 15px;
+    will-change: transform;
+  }
+
+  .place-track img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.1s ease;
+  }
+
+  .place-track img:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<section class="place-section">
+  <h2 class="place-title" style="font-size: 28px; color: #000000;">Our Success Stories🎉</h2>
+  <div class="place-marquee" id="place-marquee">
+    <div class="place-track" id="place-track">
+      <img src="Rohit.png" alt="Student 1">
+      <img src="Placement Poster Template renuka.png" alt="Student 2">
+      <img src="Placement Poster Template  (2).png" alt="Student 3">
+      <img src="Placement Poster Template  (3).png" alt="Student 4">
+      <img src="Placement Poster Template  (4).png" alt="Student 5">
+      <img src="Placement Poster Template  (5).png" alt="Student 6">
+      <img src="Placement Poster Template  (6).png" alt="Student 7">
+      <img src="Placement Poster Template  (7).png" alt="Student 8">
+      <img src="Placement Poster Template  (8).png" alt="Student 9">
+      <img src="Placement Poster Template  (9).png" alt="Student 10">
+      <img src="Placement Poster Template  (10).png" alt="Student 11">  
+      <img src="Placement Poster Template  (11).png" alt="Student 12">
+      <img src="Placement Poster Template  (12).png" alt="Student 13">
+      <img src="Placement Poster Template  (13).png" alt="Student 14">
+      <img src="Placement Poster Template  (14).png" alt="Student 15">      
+      <img src="Placement Poster Template  (15).png" alt="Student 16">
+      <img src="Placement Poster Template  (6).png" alt="Student 17">
+ 
+
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('place-track');
+  const marquee = document.getElementById('place-marquee');
+  let scrollSpeed = 1;
+
+  function scrollGallery() {
+    marquee.scrollLeft += scrollSpeed;
+
+    // When first image fully disappears, move it to end
+    const firstImg = track.children[0];
+    if (firstImg.getBoundingClientRect().right < marquee.getBoundingClientRect().left) {
+      track.appendChild(firstImg);
+      marquee.scrollLeft -= firstImg.offsetWidth + 15; // adjust scroll position
+    }
+
+    requestAnimationFrame(scrollGallery);
+  }
+
+  requestAnimationFrame(scrollGallery);
+</script>
+
+
+  
+
+<section class="about-us"  id="about-us">
+  <div class="container">
+    <h2 style="font-size: 28px;">About Us</h2>
+    <p>Welcome to <strong>MakeIOT</strong>, With Make IoT, build a strong and successful career in the core Electronics and Electrical domain.
+      With our affordable and engaging courses in Embedded Systems, IoT, PLC, and SCADA  you can grab your first job within just 60 days!.</p>
+    
+  <!--  <div class="mission">
+      <h3>Our Mission</h3>
+      <p>Our mission is to make learning an enjoyable and effective experience. We focus on holistic development and strive to create a strong foundation in both subjects and life skills. Through personalized attention and innovative teaching methods, we ensure that every student thrives.</p>
+    </div>
+-->
+<!--  <div class="team">
+      <h3>Meet Our Educators</h3>
+      <div class="team-member">
+        <img src="omkar.jpg" alt="Teacher 1">
+        <h4>Mr. Rahul Sharma</h4>
+        <p>Founder & Head Mentor</p>
+        <p>With over 10 years of experience in teaching, Mr. Rahul has helped hundreds of students achieve their academic goals. His teaching approach focuses on clarity, depth, and critical thinking.</p>
+      </div>
+      <div class="team-member">
+        <img src="cho.jpg" alt="Teacher 2">
+        <h4>Ms. Priya Gupta</h4>
+        <p>Maths Expert</p>
+        <p>Ms. Priya is known for her unique methods of making complex math concepts simple and fun. She inspires students to develop a love for the subject while building a strong conceptual foundation.</p>
+      </div>
+      <div class="team-member">
+        <img src="shweta.jpg" alt="Teacher 3">
+        <h4>Mr. Arun Verma</h4>
+        <p>Science Mentor</p>
+        <p>Mr. Arun’s approach is hands-on, using real-life examples to teach science. His passion for the subject and teaching methodology helps
+
+--> 
+</div>
+        </section>  
+
+
+        <style>
+
+          
+
+.about-us {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .about-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #111212;
+  }
+  
+  .about-us p {
+    font-size: 18px;
+    color: #0e0d0d;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .mission h3 {
+    font-size: 28px;
+    color: #0a0a0a;
+    margin-top: 40px;
+  }
+  
+  .mission p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+  
+  .team {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  
+  .team-member {
+    width: 280px;
+    text-align: center;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .team-member:hover {
+    transform: translateY(-10px);
+  }
+  
+  .team-member img {
+    width: 100%;
+    border-radius: 50%;
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .team-member h4 {
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .team-member p {
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .team-member p:first-child {
+    font-weight: bold;
+  }
+
+        </style>
+
+
+
+<!-- WhatsApp Floating Button -->
+<a
+  href="https://wa.me/918856905687" 
+  class="whatsapp-float"
+  target="_blank"
+  title="Chat with us on WhatsApp"
+>
+  <img src="wp.png" alt="WhatsApp" />
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+</style>
+
+
+
+
+
+
+
+<!-- REMOVE THIS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  footer {
+    background-color: #1c1c1c;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px 0 0 0;
+  }
+
+  .footer-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  .footer-column {
+    flex: 1 1 200px;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .footer-column h3 {
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 8px;
+  }
+
+  .footer-column a {
+    color: #ccc;
+    text-decoration: none;
+  }
+
+  .footer-column a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-column p {
+    color: #ccc;
+    margin-bottom: 0;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 22px;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  .social-icons a.instagram { color: #E1306C; }
+  .social-icons a.linkedin { color: #0A66C2; }
+  .social-icons a.youtube { color: #FF0000; }
+
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #444;
+    padding: 20px 40px;
+    font-size: 14px;
+    color: #bbb;
+  }
+</style>
+
+  <footer>
+    <div class="footer-container">
+
+      <!-- Logo & Tagline -->
+      <div class="footer-column" style="flex: 1 1 250px;">
+        <img src="Make_IoT__3_-removebg-preview.png" alt="Elite Coaching Logo" style="width: 200px; margin-bottom: 10px;">
+        <p>Empowering students to achieve excellence. Join us for top-tier classes and mentorship.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Address 1 -->
+      <div class="footer-column">
+        <h3>Address 1</h3>
+        <p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Make IoT, 3rd Floor, Samarth Park, Sinhgad Science College Road, near Pune Aviation College, Ambegaon Budruk, Pune, Maharashtra 411041</p>
+      </div>
+
+      <!-- Address 2 -->
+      <div class="footer-column">
+        <h3>Address 2</h3>
+        <p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Make IoT, Office 623, Gere Imperium Rise, Hinjawadi Phase II, Pune, Maharashtra 411057</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>
+          <i class="fas fa-phone-alt" style="margin-right: 8px;"></i>
+          <a href="tel:+918856905687">+91 88569 05687</a>
+        </p>
+        <p>
+          <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+          <a href="mailto:info@makeiot.in">info@makeiot.in</a>
+        </p>
+      </div>
+
+      <!-- Follow Us (Now in its own column) -->
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons" style="margin-top: 10px;">
+          <a href="https://www.instagram.com/make_iot/?hl=en" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.youtube.com/@MakeIoT" target="_blank" class="youtube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      info@makeiot.in. All rights reserved.
+    </div>
+
+  </div>
+  </footer>
+
+
+        </body>
+        
+        </html>
+        
