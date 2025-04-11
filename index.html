@@ -159,64 +159,35 @@
     }
 
 
-    @media (max-width: 768px) {
-  .navbar {
+/* Mobile View */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 10px 20px;
-    position: fixed;
-    top: 40px;
-    width: 100%;
-    z-index: 1000;
-    background-color: #eae5e5;
+    background-color: #333;
+    position: absolute;
+    top: 60px; /* Adjusted position */
+    right: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
   }
 
-  .logo {
-    width: 100%;
+  .nav-links.show {
     display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
   }
 
-  .nav-center {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    gap: 10px;
-  }
-
-  .nav-center li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-center li a {
-    font-size: 18px;
+  .menu-icon {
     display: block;
-    padding: 10px;
+    font-size: 1.8em;
+    cursor: pointer;
   }
 
-  .navbar-callback-btn {
-    width: 100%;
-    margin-top: 10px;
+  /* Logo */
+  .logo img {
+    height: 40px;
   }
-
-  .top-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    gap: 5px;
-  }
-
-  .top-header .center-text {
-    position: static;
-    transform: none;
-  }
-
+}
   .callback-form {
     top: 100px;
     right: -100%;
