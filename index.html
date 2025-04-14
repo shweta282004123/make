@@ -105,7 +105,7 @@
       flex-direction: column;
       justify-content: center;
       cursor: pointer;
-      margin-left: 15px;
+      margin-right: 15px;
     }
 
     .menu-toggle span {
@@ -203,9 +203,9 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 5px;
-    margin-top: 7px;
+    margin-top: 5px;
   }
 
   .menu-toggle span {
@@ -228,20 +228,20 @@
     flex-direction: column;
     align-items: flex-start;
     position: fixed;
-    top:90px;
-    left: -100%;
+    top:84px;
+    right: -100%;
     width: 60%;
     max-width: 200px;
     background-color: #eae5e5;
     padding: 7px;
-    height:48vh;
+    height:47vh;
   
     z-index: 999;
-    transition: left 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out;
   }
 
   .nav-section.show {
-    left: 0;
+    right: 0;
   }
 
   .nav-menu {
@@ -365,37 +365,52 @@
     }
   </script>
 
+
+
+
 <script>
-    // Get all the navigation links
-    const navLinks = document.querySelectorAll('.nav-menu li a');
-    const navSection = document.querySelector('.nav-section'); // The nav container
-    
-    // Function to close the mobile menu
-    function closeMenu() {
-      navSection.classList.remove('show');
-    }
-  
-    // Loop through each nav link and add an event listener for click
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent default action (jumping directly)
-        
-        // Get the target section's id
-        const targetId = link.getAttribute('href').substring(1); // Removing the '#' symbol
+  // Get nav items and the nav container
+  const navLinks = document.querySelectorAll('.nav-menu li a');
+  const navSection = document.querySelector('.nav-section');
+
+  function closeMenu() {
+    navSection.classList.remove('show');
+  }
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Only apply scroll for internal section links
+    if (href.startsWith('#')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = href.substring(1); // remove '#'
         const targetSection = document.getElementById(targetId);
-        
-        // Smooth scroll to the target section
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-  
-        // Close the menu
-        closeMenu();
+
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+
+        closeMenu(); // Close mobile nav
       });
-    });
-  </script>
-  
+    }
+    // Skip if it's an external link (e.g., Internship Google Form)
+  });
+
+  // ----------------------------
+  // Request a Callback Button Logic
+  // ----------------------------
+
+  callbackBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent click from bubbling to window
+  callbackForm.classList.add('active');
+  closeMenu(); // ✅ Close the nav menu if open
+});
+</script>
 
 
 
@@ -798,7 +813,7 @@
     padding: 20px 20px;
     text-align: center;
     background: #f9f9f9;
-    top: 845px;
+    top: 846px;
 
   }
   
@@ -822,9 +837,9 @@
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 260px;
+    width: 250px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-   height:340px;
+   height:380px;
   }
   
   .course img {
@@ -1284,15 +1299,15 @@ if (watchMoreButton) {
   }
   
   /* For smaller screens, keep the columns horizontally aligned */
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .col-12 {
       width: 100%;
       padding: 10px;
     }
   
     .video-container iframe {
-      width: 100%;
-      height: auto;
+      width: 95%;
+      height: 280px;
     }
   
     /* Ensure proper alignment of video and advantages list */
@@ -1302,12 +1317,11 @@ if (watchMoreButton) {
   
     /* Adjust button appearance on smaller screens */
     .btn-custom {
-      width: 100%; /* Full width for smaller screens */
+      width: 40%; /* Full width for smaller screens */
       text-align: center;
       padding: 12px;
     }
   }
-
 
 </style>
 
@@ -1403,7 +1417,7 @@ if (watchMoreButton) {
     .combined-container {
       flex-direction: column;
       align-items: center;
-      margin-top: 600px;
+      margin-top: 520px;
     }
 
     .left-section,
@@ -1770,9 +1784,9 @@ function showNextImage() {
   {
     .whatsapp-float {
     position: fixed;
-    width: 40px;
-    height: 40px;
-    bottom: 50px;
+    width: 50px;
+    height: 55px;
+    bottom: 55px;
     right: 5px;
     z-index: 999;
     cursor: pointer;
@@ -1791,6 +1805,48 @@ function showNextImage() {
 
 
 
+<!-- Call Floating Button -->
+<a
+  href="tel:+918856905687"
+  class="call-float"
+  title="Call us"
+>
+  <img src="call3.png" alt="Call" />
+</a>
+<style>
+.call-float {
+  position: fixed;
+  width: 60px;
+  height: 60x;
+  bottom: 90px; /* 👈 slightly above WhatsApp */
+  right: 20px;
+  z-index: 999;
+  cursor: pointer;
+  border-radius: 130%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.call-float img {
+  width: 100%;
+  height: 100%;
+   border-radius: 90%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .call-float {
+    width: 55px;
+    height: 55px;
+    bottom: 130px; /* 👈 keep it above WhatsApp */
+    right: 5px;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+}
+
+</style>
 
 
 
