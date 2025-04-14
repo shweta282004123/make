@@ -1,23 +1,19 @@
-
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Make IoT Website</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Navbar</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     body {
       background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
     }
 
     .top-header {
@@ -54,25 +50,28 @@
       width: 100%;
       z-index: 1000;
       height: 80px;
+      flex-wrap: wrap;
     }
 
     .logo img {
       height: 50px;
     }
 
-    .nav-center {
+    .nav-section {
       display: flex;
-      gap: 15px;
+      align-items: center;
+      gap: 20px;
       flex: 1;
-      justify-content: right;
-      margin-right: 30px;
+      justify-content: flex-end;
     }
 
-    .nav-center li {
+    .nav-menu {
+      display: flex;
+      gap: 15px;
       list-style: none;
     }
 
-    .nav-center li a {
+    .nav-menu li a {
       text-decoration: none;
       color: #111;
       font-size: 18px;
@@ -81,7 +80,7 @@
       transition: color 0.2s;
     }
 
-    .nav-center li a:hover {
+    .nav-menu li a:hover {
       color: #f0a500;
     }
 
@@ -95,12 +94,30 @@
       cursor: pointer;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
       transition: 0.3s;
-      margin-left: 20px;
     }
 
     .navbar-callback-btn:hover {
       background: #e64a19;
     }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+
+
 
     .callback-form {
       position: fixed;
@@ -158,74 +175,231 @@
       background: #e64a19;
     }
 
+    .li6{
+      display:none;
+    }
 
-/* Mobile View */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
+    @media (max-width: 768px) {
+  .navbar {
     flex-direction: column;
-    background-color: #333;
-    position: absolute;
-    top: 60px; /* Adjusted position */
-    right: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
+    align-items: flex-start;
+    padding: 10px 20px;
+    top: 30px;
+    gap: 20px;
+    height: 60px;
+
   }
 
-  .nav-links.show {
+  .logo {
+    width: 70%;
     display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: none;
   }
 
-  .menu-icon {
-    display: block;
-    font-size: 1.8em;
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     cursor: pointer;
+    margin-left: 0;
+    margin-bottom: 5px;
+    margin-top: 7px;
   }
 
-  /* Logo */
-  .logo img {
-    height: 40px;
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #333;
+    margin: 2px 0;
+    border-radius: 2px;
   }
-}
-  .callback-form {
-    top: 100px;
-    right: -100%;
+
+  .navbar-callback-btn {
+    align-self: flex-end;
+    width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-top: 0;
+  }
+
+  .nav-section {
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top:90px;
+    left: -100%;
+    width: 60%;
+    max-width: 200px;
+    background-color: #eae5e5;
+    padding: 7px;
+    height:55vh;
+  
+    z-index: 999;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .nav-section.show {
+    left: 0;
+  }
+
+  .nav-menu {
+    flex-direction: column;
     width: 100%;
-    max-width: 350px;
   }
 
-  .callback-form.active {
-    right: 10px;
+  .nav-menu li {
+    width: 100%;
   }
+
+  .nav-menu li a {
+    display: block;
+    width: 100%;
+    padding: 4px 0;
+    font-size: 18px;
+  }
+
+
+.li6{
+  display: flex;
+}
+  
+.li5{
+  display: none;
+
+}
+  .top-header {
+      background-color: #f7902a;
+      color: white;
+      padding:none;
+      display: flex;
+      justify-content: space-between;
+      
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+      height: 357x;
+      
+      font-size: 3px;
+    }
+
+
+  .top-header .center-text {
+    display: none;
+  }
+
+
+  /* For mobile: place callback button under logo, right side */
+.callbackBtn{
+  align-self: flex-end;
+  margin-right: 10px;
+  margin-top: -10px;
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+
+
+.callback-form {
+      position: fixed;
+      top: 170px;
+      right: -260px;
+      transform: translateY(0);
+      width: 250px;
+      background: white;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      transition: right 0.4s ease-in-out;
+      z-index: 2000;
+    }
+
+
+
+
+
 }
 
   </style>
 </head>
-
 <body>
+
   <!-- Top Header -->
   <div class="top-header">
     <div style=" font-size: 18px;">📧info@makeiot.in</div>
-    <div class="center-text"  style="color:#3b2f2f; font-size: 18px;">🚀 Kickstart Your Career! Land Your First Job in Just 60 Days! 🎯</div>
+    <div class="center-text" style="color:#3b2f2f; font-size: 18px;">🚀 Kickstart Your Career! Land Your First Job in Just 60 Days! 🎯</div>
     <div style="font-size:18px;">📞 +918856905687</div>
   </div>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <img src="Make_IoT__3_-removebg-preview.png" alt="Logo">
+      <img src="Make_IoT__3_-removebg-preview.png" alt="Logo" />
     </div>
-    <ul class="nav-center">
-      <li><a href="#hero-section">Home</a></li>
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#event">Events</a></li>
-      <li><a href="https://forms.gle/2yhzdZrYbTe3x3ax8" target="_blank">Internship</a></li>
-      <li><a href="#about-us">About Us</a></li>
-      <li><a href="#batches">Batches</a></li>
-    </ul>
-    <button id="callbackBtn" class="navbar-callback-btn">📞 Request a Callback</button>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-section" id="navSection">
+      <ul class="nav-menu">
+        <li><a href="#hero-section">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#event">Events</a></li>
+        <li><a href="https://forms.gle/2yhzdZrYbTe3x3ax8" target="_blank">Internship</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li class="li5"><a href="#batches">Batches</a></li>
+        <li class="li6"><a href="#batches1" >Batches</a></li>
+      </ul>
+      <button id="callbackBtn" class="navbar-callback-btn">📞 Request a Callback</button>
+    </div>
   </nav>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navSection').classList.toggle('show');
+    }
+  </script>
+
+<script>
+    // Get all the navigation links
+    const navLinks = document.querySelectorAll('.nav-menu li a');
+    const navSection = document.querySelector('.nav-section'); // The nav container
+    
+    // Function to close the mobile menu
+    function closeMenu() {
+      navSection.classList.remove('show');
+    }
+  
+    // Loop through each nav link and add an event listener for click
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default action (jumping directly)
+        
+        // Get the target section's id
+        const targetId = link.getAttribute('href').substring(1); // Removing the '#' symbol
+        const targetSection = document.getElementById(targetId);
+        
+        // Smooth scroll to the target section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+  
+        // Close the menu
+        closeMenu();
+      });
+    });
+  </script>
+  
+
+
+
+
 
   <!-- Callback Form -->
   <div class="callback-form" id="callbackForm">
@@ -241,6 +415,9 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+
+
+  
 
 
 
@@ -611,6 +788,131 @@
     display: none; /* Pehle hide rahega */
   }
   
+
+
+
+  @media(max-width:768px)
+  {
+    
+    courses {
+    padding: 20px 20px;
+    text-align: center;
+    background: #f9f9f9;
+    top: 845px;
+
+  }
+  
+  .courses h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .course-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+   
+  }
+
+  
+  .course {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+   height:340px;
+  }
+  
+  .course img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .course h3 {
+    font-size: 24px;
+    margin: 15px 0;
+  }
+  
+  .course p {
+    font-size: 16px;
+    color: #060606;
+    margin-bottom: 15px;
+  }
+  
+  .course-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .button1{
+      background:#ffcc00;
+  }
+  .course-btn:hover {
+    background: black;
+    color: white;
+  }
+  
+  /* Hover Effect on Course Cards */
+  .course:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  #info-box {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #info-box {
+    display: none; /* Pehle hide rahega */
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #syllabus-button {
+    display: none; /* Pehle hide rahega */
+  }
+  
+  }
   
 </style>
 
@@ -637,11 +939,14 @@
   .custom-batches-table td {
     padding: 12px;
     border: 1px solid #0e0e0e;
+
+
   }
 
   .custom-batches-table thead {
     background-color: #ff5722;
     color: white;
+  
   }
 
   .custom-enroll-btn {
@@ -652,54 +957,57 @@
     border-radius: 5px;
     cursor: pointer;
   }
-
-  @media (max-width: 768px) {
-    .custom-batches-table,
-    .custom-batches-table thead,
-    .custom-batches-table tbody,
-    .custom-batches-table th,
-    .custom-batches-table td,
-    .custom-batches-table tr {
-      display: block;
-      width: 100%;
-    }
-
-    .custom-batches-table thead {
-      display: none;
-    }
-
-    .custom-batches-table tr {
-      margin-bottom: 20px;
-      background: #f9f9f9;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      border-radius: 8px;
-
-     
-    }
-
-    .custom-batches-table td {
-      text-align: left;
-      padding: 10px;
-      border: none;
-      position: relative;
-      font-size: 24px;
-    }
-
-   
-
-    
-
-    .custom-batches-table td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-      color: #333;
-    }
+  .custom-batches-wrapper1{
+    display: none;
   }
-</style>
+  
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .custom-batches-section1 {
+    padding: 10px;
+    background-color: #fff;
 
+  }
+
+  .custom-batches-wrapper{
+    display: none;
+  }
+  .custom-batches-wrapper1 {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+  }
+
+  .custom-batches-table1 {
+    font-size: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .custom-batches-table1 thead {
+    background-color: #ff5722;
+    color: white;
+    display: table-header-group;
+    font-size: 14px;
+  }
+
+  .custom-batches-table1 th,
+  .custom-batches-table1 td {
+    padding: 6px;
+    font-size: 11px;
+    border: 1px solid black;
+  }
+
+  .custom-enroll-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}
+
+  
+</style>
+<div class="custom-batches-wrapper">
 <section id="batches" class="custom-batches-section">
   <h2 style="text-align: center; margin-bottom: 30px; font-size: 28px; font-weight: bold; color: #333;">
     📅 Upcoming Batches
@@ -708,7 +1016,7 @@
     <table class="custom-batches-table">
       <thead>
         <tr>
-          <th style="font-size: 22px;">Sr No</th>
+         <th style="font-size: 22px;">Sr No</th>
           <th style="font-size: 22px;">Course</th>
           <th style="font-size: 22px;">Mode</th>
           <th style="font-size: 22px;">Date</th>
@@ -748,28 +1056,103 @@
   </div>
 </section>
 
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    const callbackBtn = document.getElementById("callbackBtn");
-    const callbackForm = document.getElementById("callbackForm");
-    const closeForm = document.getElementById("closeForm");
-    const enrollButtons = document.querySelectorAll(".custom-enroll-btn");
 
-    callbackBtn.addEventListener("click", () => callbackForm.classList.add("active"));
-    closeForm.addEventListener("click", () => callbackForm.classList.remove("active"));
-    enrollButtons.forEach(btn => btn.addEventListener("click", () => callbackForm.classList.add("active")));
+  
+</style>
+<div class="custom-batches-wrapper1">
+<section id="batches1" class="custom-batches-section">
+  <h2 style="text-align: center; margin-bottom: 20px; font-size: 28px; font-weight: bold; color: #333;">
+    📅 Upcoming Batches
+  </h2>
+  <div>
+    <table class="custom-batches-table1">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Course</th>
+          <th>Mode</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Sr No">1</td>
+          <td data-label="Course">Master Embedded System in 90 Days</td>
+          <td data-label="Mode">Offline+Online</td>
+          <td data-label="Date">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn">Enroll Now</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Sr No">2</td>
+          <td data-label="Course">Master PLC-SCADA System in 30 Days</td>
+          <td data-label="Mode">Offline+Online</td>
+          <td data-label="Date">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn">Enroll Now</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Sr No">3</td>
+          <td data-label="Course">Free Embedded and IoT Internship</td>
+          <td data-label="Mode">Offline+Online</td>
+          <td data-label="Date">1 May 2025</td>
+          <td data-label="Action">
+            <button class="custom-enroll-btn">Enroll Now</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyxoHvMT10iR8JfQEjE23J3pOgifAWj1FttCAnb8hHP81naKXEp2svxBVzrHz66ogbk/exec';
-    const form = document.forms['contact-form'];
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => alert("Thank you! Form is submitted"))
-        .then(() => window.location.reload())
-        .catch(error => console.error('Error!', error.message));
-    });
-  </script>
+
+
+<script>
+  const callbackBtn = document.getElementById("callbackBtn");
+  const callbackForm = document.getElementById("callbackForm");
+  const closeForm = document.getElementById("closeForm");
+  const enrollButtons = document.querySelectorAll(".custom-enroll-btn");
+
+  // Show and Hide form functions
+  function showForm() {
+    callbackForm.classList.add("active");
+  }
+
+  function hideForm() {
+    callbackForm.classList.remove("active");
+  }
+
+  // Event listeners for buttons
+  callbackBtn.addEventListener("click", showForm);
+  closeForm.addEventListener("click", hideForm);
+  enrollButtons.forEach(btn => btn.addEventListener("click", showForm));
+
+  // Submit to Google Sheet
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyxoHvMT10iR8JfQEjE23J3pOgifAWj1FttCAnb8hHP81naKXEp2svxBVzrHz66ogbk/exec';
+  const form = document.forms['contact-form'];
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // 👇 Instantly close the form
+    hideForm();
+    alert("Thank you for requesting!");
+
+    // 👇 Then continue submitting in background
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(() => window.location.reload())
+      .catch(error => console.error('Error!', error.message));
+  });
+</script>
+
+
+
 
 
 
@@ -925,6 +1308,16 @@ if (watchMoreButton) {
     }
   }
   
+
+
+   
+
+  
+
+ 
+
+
+
 </style>
 
 
@@ -1033,6 +1426,7 @@ if (watchMoreButton) {
     .combined-container {
       flex-direction: column;
       align-items: center;
+      margin-top: 680px;
     }
 
     .left-section,
@@ -1044,13 +1438,15 @@ if (watchMoreButton) {
       grid-template-columns: repeat(2, 1fr);
 
     }
-  }
+ 
 
   
 .logo-gallery .logo-item:nth-child(4),
 .logo-gallery .logo-item:nth-child(5),
 .logo-gallery .logo-item:nth-child(6) {
   margin-top: -30px;
+}
+
 }
 </style>
 </head>
@@ -1141,114 +1537,8 @@ function showNextImage() {
   }
 
   </style>
-<style>
-  
-
-/* Container padding */
-.container.py-5 {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-  
-  /* Custom Box Styling */
-  .custom-box {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Styling for the advantages list */
-  .custom-box ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .custom-box ul li {
-    padding: 8px 0;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    padding-left: 20px;
-  }
-  
-  .custom-box ul li:hover { 
-    color: #00FF7F;
-  }
-  
-  .custom-box ul li:before {
-    margin-right: 10px;
-    font-size: 20px;
-  }
-  
-  /* Video section styling */
-  .video-container iframe {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Styling for the "Watch More Videos" button */
-  .btn-custom {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 20px; /* Adjust padding for better visual */
-    font-size: 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    display: inline-block; /* Ensure button appears as an inline element */
-    margin-top: 20px; /* Add space at the top for proper alignment */
-  }
-  
-  .btn-custom:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Flexbox to arrange columns horizontally */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  /* For medium and larger screens, keep the layout side-by-side (50% width each) */
-  .col-md-6 {
-    width: 50%;
-    padding: 15px;
-  }
-  
-  /* For smaller screens, keep the columns horizontally aligned */
-  @media (max-width: 767px) {
-    .col-12 {
-      width: 100%;
-      padding: 10px;
-    }
-  
-    .video-container iframe {
-      width: 100%;
-      height: auto;
-    }
-  
-    /* Ensure proper alignment of video and advantages list */
-    .col-md-6 {
-      width: 100%; /* Changed from 50% to 100% for mobile responsiveness */
-    }
-  
-    /* Adjust button appearance on smaller screens */
-    .btn-custom {
-      width: 100%; /* Full width for smaller screens */
-      text-align: center;
-      padding: 12px;
-    }
-  }
-  
 
  
-</style>
-
-
-
-
-
 
 <style>
   
@@ -1499,6 +1789,26 @@ function showNextImage() {
     height: 100%;
     border-radius: 50%;
   }
+  @media(max-width:768px)
+  {
+    .whatsapp-float {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 50px;
+    right: 5px;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  }
 </style>
 
 
@@ -1620,7 +1930,7 @@ function showNextImage() {
           <li><a href="#about">About Us</a></li>
           <li><a href="#courses">Courses</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#faq">FAQ</a></li>
+      
         </ul>
       </div>
 
@@ -1676,7 +1986,8 @@ function showNextImage() {
   </footer>
 
 
-        </body>
-        
-        </html>
-        
+
+
+
+</body>
+</html>
